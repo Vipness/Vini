@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>703525665180-a2uj7vk2cfnifj1fi3kgfnutc4i4641l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.703525665180-a2uj7vk2cfnifj1fi3kgfnutc4i4641l</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>703525665180-s0ha0ibev119kom1ooe577ehabgf4dv8.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCcv2sl2BBSVijpFdH2yKTctjE-m6ynAFk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>703525665180</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.vini</string>
+	<key>PROJECT_ID</key>
+	<string>vini-38ae9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vini-38ae9.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:703525665180:ios:04ea8ba7cab05a5a82b059</string>
+</dict>
+</plist>

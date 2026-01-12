@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "703525665180",
+    "project_id": "vini-38ae9",
+    "storage_bucket": "vini-38ae9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703525665180:android:c64f21a3a3418e5982b059",
+        "android_client_info": {
+          "package_name": "com.mycompany.vini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703525665180-s0ha0ibev119kom1ooe577ehabgf4dv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.vini",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "703525665180-4ckfiovgf27l8flislk4tubms2iff8ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkXjG78c4EEgJ_pHfmSqta26hlDhfNp1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703525665180-4ckfiovgf27l8flislk4tubms2iff8ns.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "703525665180-a2uj7vk2cfnifj1fi3kgfnutc4i4641l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.vini"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
