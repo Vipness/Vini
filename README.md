@@ -1,7 +1,47 @@
-# Vini
+# Vini – Mobile Expense Splitting App
 
-A new Flutter project.
+Vini is a mobile application for tracking shared expenses and splitting bills between multiple people.  
+It is designed for small groups (friends, roommates, trips) and focuses on a simple and clear user experience.
 
-## Getting Started
+The app uses an item-based approach to expense splitting, allowing users to assign each bill item to the people who participated in paying for it.
 
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+> ℹ️ The app UI is currently available in Slovenian.
+
+
+## Features
+- Create and manage shared bills
+- Split expenses based on items
+- Track balances (who owes whom)
+- Manage users
+- Simple and mobile-first UI
+
+
+
+## Screenshots
+
+![Home Screen](screenshots/homepage.jpg)
+![Create Bill](screenshots/create_bill.jpg)
+![Bill List](screenshots/bill_list.jpg)
+![Members](screenshots/members.jpg)
+
+
+
+
+## Tech Stack
+- **Flutter** (generated with FlutterFlow)
+- **Firebase Authentication**
+- **Cloud Firestore**
+
+
+
+## Installation (Android)
+
+1. Download the release APK from this repository:
+   - `app-release.apk`
+2. Enable **Install unknown apps** in Android settings
+3. Open the APK and install the app
+
+
+
+## Notes
+- This project was developed as part of a university assignment together with a friend who helped with the design.
