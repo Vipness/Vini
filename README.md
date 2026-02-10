@@ -19,11 +19,10 @@ The app uses an item-based approach to expense splitting, allowing users to assi
 
 ## Screenshots
 
-![Home Screen](screenshots/homepage.jpg)
-![Create Bill](screenshots/create_bill.jpg)
-![Bill List](screenshots/bill_list.jpg)
-![Members](screenshots/members.jpg)
-
+<img src="screenshots/homepage.jpg" width="300">
+<img src="screenshots/create_bill.jpg" width="300">
+<img src="screenshots/bill_list.jpg" width="300">
+<img src="screenshots/members.jpg" width="300">
 
 
 
