@@ -80,7 +80,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                 child: TextFormField(
                   controller: _model.nameTextController,
                   focusNode: _model.nameFocusNode,
-                  autofocus: true,
+                  autofocus: false,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: 'Novo ime',
@@ -287,9 +287,12 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                             backgroundColor: Colors.transparent,
                             alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
-                            child: AlertErrorWidget(
-                              message:
-                                  'Imena ni mogoče spremeniti, ker se polji ne ujemata.',
+                            child: Container(
+                              height: 200.0,
+                              child: AlertErrorWidget(
+                                message:
+                                    'Imena ni mogoče spremeniti, ker se polji ne ujemata.',
+                              ),
                             ),
                           );
                         },

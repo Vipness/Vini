@@ -218,7 +218,7 @@ class _LeaveHouseholdWidgetState extends State<LeaveHouseholdWidget> {
                                 alignment: AlignmentDirectional(0.0, 0.0)
                                     .resolve(Directionality.of(context)),
                                 child: Container(
-                                  height: 186.0,
+                                  height: 200.0,
                                   child: AlertErrorWidget(
                                     message:
                                         'Ne morete zapustiti skupine. Najprej dodelite drugega skrbnika.',

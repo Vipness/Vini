@@ -84,7 +84,7 @@ class _CreateHouseholdWidgetState extends State<CreateHouseholdWidget> {
                   child: TextFormField(
                     controller: _model.userNameTextController,
                     focusNode: _model.userNameFocusNode,
-                    autofocus: true,
+                    autofocus: false,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Vaše ime',

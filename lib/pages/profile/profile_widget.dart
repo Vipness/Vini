@@ -516,7 +516,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   return Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: Container(
-                                      height: 365.0,
+                                      height: 380.0,
                                       child: ChangePasswordWidget(),
                                     ),
                                   );
@@ -613,7 +613,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 return Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
                                   child: Container(
-                                    height: 365.0,
+                                    height: 380.0,
                                     child: ChangeNameWidget(),
                                   ),
                                 );

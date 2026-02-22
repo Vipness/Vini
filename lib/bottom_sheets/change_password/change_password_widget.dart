@@ -79,7 +79,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 child: TextFormField(
                   controller: _model.passwordTextController,
                   focusNode: _model.passwordFocusNode,
-                  autofocus: true,
+                  autofocus: false,
                   obscureText: !_model.passwordVisibility,
                   decoration: InputDecoration(
                     labelText: 'Novo geslo',
@@ -315,9 +315,12 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                             backgroundColor: Colors.transparent,
                             alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
-                            child: AlertErrorWidget(
-                              message:
-                                  'Gesla ni mogoče spremeniti, ker se gesli ne ujemata.',
+                            child: Container(
+                              height: 200.0,
+                              child: AlertErrorWidget(
+                                message:
+                                    'Gesla ni mogoče spremeniti, ker se gesli ne ujemata.',
+                              ),
                             ),
                           );
                         },

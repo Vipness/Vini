@@ -196,6 +196,47 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 0.0),
                                             child: Text(
+                                              'Skupni znesek: ${billDetailsBillsRecord.totalAmount.toStringAsFixed(2).replaceAll(".", ",")}€',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleLarge
+                                                  .override(
+                                                    font:
+                                                        GoogleFonts.interTight(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 16.0, 0.0, 0.0),
+                                            child: Text(
                                               'Razdelitev',
                                               style: FlutterFlowTheme.of(
                                                       context)

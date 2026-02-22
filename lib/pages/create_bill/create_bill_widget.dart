@@ -202,9 +202,9 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                         TextFormField(
                                           controller: _model.taskTextController,
                                           focusNode: _model.taskFocusNode,
-                                          autofocus: true,
+                                          autofocus: false,
                                           textCapitalization:
-                                              TextCapitalization.words,
+                                              TextCapitalization.sentences,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelStyle:
@@ -937,7 +937,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                         MediaQuery.viewInsetsOf(
                                                             context),
                                                     child: Container(
-                                                      height: 510.0,
+                                                      height: 525.0,
                                                       child:
                                                           AddorEditItemWidget(
                                                         isEdit: false,
@@ -1549,7 +1549,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                                       child:
                                                                           Container(
                                                                         height:
-                                                                            510.0,
+                                                                            525.0,
                                                                         child:
                                                                             AddorEditItemWidget(
                                                                           isEdit:
@@ -1763,7 +1763,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                     // Validacija podatkov
                                     if ((_model.billItemsUI.isNotEmpty) &&
                                         (_model.taskTextController.text !=
-                                                '') &&
+                                            '') &&
                                         (_model.dropDownValue != null &&
                                             _model.dropDownValue != '')) {
                                       // Dobim Document Reference za uporabnika v dropdownu (dropdown value je String)

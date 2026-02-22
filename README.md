@@ -19,10 +19,10 @@ The app uses an item-based approach to expense splitting, allowing users to assi
 
 ## Screenshots
 
-<img src="screenshots/homepage.jpg" width="300">
-<img src="screenshots/create_bill.jpg" width="300">
-<img src="screenshots/bill_list.jpg" width="300">
-<img src="screenshots/members.jpg" width="300">
+<img src="screenshots/homepage.jpg" width="250">
+<img src="screenshots/create_bill.jpg" width="250">
+<img src="screenshots/bill_list.jpg" width="250">
+<img src="screenshots/members.jpg" width="250">
 
 
 
@@ -35,8 +35,8 @@ The app uses an item-based approach to expense splitting, allowing users to assi
 
 ## Installation (Android)
 
-1. Download the release APK from this repository:
-   - `app-release.apk`
+1. Download the latest release APK from GitHub:
+   - https://github.com/Vipness/Vini/releases
 2. Enable **Install unknown apps** in Android settings
 3. Open the APK and install the app
 

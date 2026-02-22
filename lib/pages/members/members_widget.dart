@@ -99,7 +99,7 @@ class _MembersWidgetState extends State<MembersWidget> {
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
                               child: Container(
-                                height: 260.0,
+                                height: 270.0,
                                 child: InviteToHouseholdWidget(
                                   householdRef:
                                       membersHouseholdsRecord.reference,
@@ -1076,7 +1076,7 @@ class _MembersWidgetState extends State<MembersWidget> {
                                                                       child:
                                                                           Container(
                                                                         height:
-                                                                            245.0,
+                                                                            255.0,
                                                                         child:
                                                                             RemoveUserWidget(
                                                                           userRef:

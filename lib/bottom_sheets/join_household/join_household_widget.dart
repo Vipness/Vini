@@ -84,7 +84,7 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                   child: TextFormField(
                     controller: _model.userNameTextController,
                     focusNode: _model.userNameFocusNode,
-                    autofocus: true,
+                    autofocus: false,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Vaše ime',
@@ -171,6 +171,7 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                   focusNode: _model.householdCodeFocusNode,
                   autofocus: false,
                   obscureText: false,
+                  textCapitalization: TextCapitalization.characters,
                   decoration: InputDecoration(
                     labelText: 'Koda skupine',
                     labelStyle:
@@ -285,8 +286,8 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                     await currentUserReference!.update(createUsersRecordData(
                       displayName: _model.userNameTextController.text,
                       householdId: _model.householdsRecord?.reference,
-                      photoUrl: functions.generatePhotoUrl(
-                          _model.userNameTextController.text),
+                      photoUrl: functions
+                          .generatePhotoUrl(_model.userNameTextController.text),
                     ));
 
                     context.goNamed(
@@ -299,7 +300,7 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                         ),
                       },
                     );
-                  
+
                     safeSetState(() {});
                   },
                   text: 'Pridruži se',

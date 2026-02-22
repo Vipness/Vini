@@ -305,7 +305,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: Container(
-                                      height: 365.0,
+                                      height: 380.0,
                                       child: CreateHouseholdWidget(),
                                     ),
                                   ),
@@ -377,7 +377,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: Container(
-                                      height: 395.0,
+                                      height: 415.0,
                                       child: JoinHouseholdWidget(),
                                     ),
                                   ),

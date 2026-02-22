@@ -152,7 +152,7 @@ class _AddorEditItemWidgetState extends State<AddorEditItemWidget> {
                       child: TextFormField(
                         controller: _model.itemNameTextController,
                         focusNode: _model.itemNameFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelStyle:
