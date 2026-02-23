@@ -358,7 +358,7 @@ class _Auth1WidgetState extends State<Auth1Widget>
                                                           .emailAddressTextController,
                                                       focusNode: _model
                                                           .emailAddressFocusNode,
-                                                      autofocus: true,
+                                                      autofocus: false,
                                                       autofillHints: [
                                                         AutofillHints.email
                                                       ],
@@ -1134,7 +1134,7 @@ class _Auth1WidgetState extends State<Auth1Widget>
                                                           .emailAddressCreateTextController,
                                                       focusNode: _model
                                                           .emailAddressCreateFocusNode,
-                                                      autofocus: true,
+                                                      autofocus: false,
                                                       autofillHints: [
                                                         AutofillHints.email
                                                       ],
