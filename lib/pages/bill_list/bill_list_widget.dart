@@ -630,6 +630,9 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                         8.0,
                                                                     buttonSize:
                                                                         40.0,
+                                                                    disabledIconColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .alternate,
                                                                     icon: Icon(
                                                                       Icons
                                                                           .playlist_remove_rounded,
@@ -639,11 +642,10 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                       size:
                                                                           24.0,
                                                                     ),
-                                                                    onPressed: ((listViewBillsRecord.paidBy !=
+                                                                    onPressed: ((listViewBillsRecord.paidBy ==
                                                                                 currentUserReference) ||
-                                                                            !containerHouseholdsRecord.admins.contains(currentUserReference))
-                                                                        ? null
-                                                                        : () async {
+                                                                            containerHouseholdsRecord.admins.contains(currentUserReference))
+                                                                        ? () async {
                                                                             await showModalBottomSheet(
                                                                               isScrollControlled: true,
                                                                               backgroundColor: Colors.transparent,
@@ -668,7 +670,8 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                               },
                                                                             ).then((value) =>
                                                                                 safeSetState(() {}));
-                                                                          },
+                                                                          }
+                                                                        : null,
                                                                   ),
                                                                 ),
                                                               ],

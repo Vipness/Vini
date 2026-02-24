@@ -2385,9 +2385,8 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         size: 24.0,
                                                                                       ),
-                                                                                      onPressed: ((listViewBillsRecord.paidBy != currentUserReference) || !rowHouseholdsRecord.admins.contains(currentUserReference))
-                                                                                          ? null
-                                                                                          : () async {
+                                                                                      onPressed: ((listViewBillsRecord.paidBy == currentUserReference) || rowHouseholdsRecord.admins.contains(currentUserReference))
+                                                                                          ? () async {
                                                                                               await showModalBottomSheet(
                                                                                                 isScrollControlled: true,
                                                                                                 backgroundColor: Colors.transparent,
@@ -2411,7 +2410,8 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                                                   );
                                                                                                 },
                                                                                               ).then((value) => safeSetState(() {}));
-                                                                                            },
+                                                                                            }
+                                                                                          : null,
                                                                                     ),
                                                                                   ),
                                                                                 ],
