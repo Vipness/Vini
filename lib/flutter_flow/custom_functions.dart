@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math' as math;
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +28,16 @@ String generatePhotoUrl(String name) {
 
   // Sestavi URL
   return 'https://ui-avatars.com/api/?name=$encodedName&background=random';
+}
+
+String formatAsEuro(double amount) {
+  final format = NumberFormat.currency(
+    locale: "sl_SI",
+    symbol: '€',
+    decimalDigits: 2,
+  );
+
+  return format.format(amount);
 }
 
 List<BalanceRowStruct> calculateBillBalance(

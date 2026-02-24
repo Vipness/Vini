@@ -196,7 +196,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 0.0),
                                             child: Text(
-                                              'Skupni znesek: ${billDetailsBillsRecord.totalAmount.toStringAsFixed(2).replaceAll(".", ",")}€',
+                                              'Skupni znesek: ${functions.formatAsEuro(billDetailsBillsRecord.totalAmount)}',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .titleLarge
@@ -741,20 +741,9 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                                   child: Text(
                                                                     balanceItem.amount >
                                                                             0.0
-                                                                        ? '+${formatNumber(
-                                                                            balanceItem.amount,
-                                                                            formatType:
-                                                                                FormatType.decimal,
-                                                                            decimalType:
-                                                                                DecimalType.commaDecimal,
-                                                                          )}€'
-                                                                        : '${formatNumber(
-                                                                            balanceItem.amount,
-                                                                            formatType:
-                                                                                FormatType.decimal,
-                                                                            decimalType:
-                                                                                DecimalType.commaDecimal,
-                                                                          )}€',
+                                                                        ? '+${functions.formatAsEuro(balanceItem.amount)}'
+                                                                        : functions
+                                                                            .formatAsEuro(balanceItem.amount),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1442,7 +1431,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                   child: Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            -1.0, 0.0),
+                                                            1.0, 0.0),
                                                     child: Text(
                                                       'Znesek',
                                                       style:
@@ -1658,6 +1647,7 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
+                                                              maxLines: 1,
                                                             ),
                                                           ),
                                                         ),
@@ -1666,20 +1656,14 @@ class _BillDetailsWidgetState extends State<BillDetailsWidget> {
                                                           child: Align(
                                                             alignment:
                                                                 AlignmentDirectional(
-                                                                    0.0, 0.0),
+                                                                    1.0, 0.0),
                                                             child: Text(
-                                                              '${formatNumber(
-                                                                listViewBillItemsRecord
-                                                                    .amount,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .decimal,
-                                                                decimalType:
-                                                                    DecimalType
-                                                                        .commaDecimal,
-                                                              )}€',
+                                                              functions.formatAsEuro(
+                                                                  listViewBillItemsRecord
+                                                                      .amount),
                                                               textAlign:
-                                                                  TextAlign.end,
+                                                                  TextAlign
+                                                                      .right,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium

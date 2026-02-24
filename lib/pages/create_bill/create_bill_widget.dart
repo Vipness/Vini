@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/misc/alert_error/alert_error_widget.dart';
 import '/misc/empty_list/empty_list_widget.dart';
 import '/index.dart';
@@ -937,7 +938,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                         MediaQuery.viewInsetsOf(
                                                             context),
                                                     child: Container(
-                                                      height: 525.0,
+                                                      height: 530.0,
                                                       child:
                                                           AddorEditItemWidget(
                                                         isEdit: false,
@@ -1130,7 +1131,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                 child: Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          -1.0, 0.0),
+                                                          0.0, 0.0),
                                                   child: Text(
                                                     'Znesek',
                                                     style: FlutterFlowTheme.of(
@@ -1166,7 +1167,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                 ),
                                               ),
                                               Expanded(
-                                                flex: 5,
+                                                flex: 3,
                                                 child: Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -1359,28 +1360,23 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                               ),
                                                           overflow: TextOverflow
                                                               .ellipsis,
+                                                          maxLines: 1,
                                                         ),
                                                       ),
                                                     ),
                                                     Expanded(
-                                                      flex: 2,
+                                                      flex: 3,
                                                       child: Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.0, 0.0),
+                                                                1.0, 0.0),
                                                         child: Text(
-                                                          '${formatNumber(
-                                                            billItemsItem
-                                                                .amount,
-                                                            formatType:
-                                                                FormatType
-                                                                    .decimal,
-                                                            decimalType:
-                                                                DecimalType
-                                                                    .commaDecimal,
-                                                          )}€',
+                                                          functions
+                                                              .formatAsEuro(
+                                                                  billItemsItem
+                                                                      .amount),
                                                           textAlign:
-                                                              TextAlign.end,
+                                                              TextAlign.right,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1412,7 +1408,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                       ),
                                                     ),
                                                     Expanded(
-                                                      flex: 5,
+                                                      flex: 4,
                                                       child: Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -1503,7 +1499,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                       ),
                                                     ),
                                                     Expanded(
-                                                      flex: 3,
+                                                      flex: 4,
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -1549,7 +1545,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                                       child:
                                                                           Container(
                                                                         height:
-                                                                            525.0,
+                                                                            530.0,
                                                                         child:
                                                                             AddorEditItemWidget(
                                                                           isEdit:

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/misc/empty_list/empty_list_widget.dart';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -1463,16 +1464,10 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                             4.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  '${formatNumber(
-                                                                    _model
-                                                                        .owedToYou,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .decimal,
-                                                                    decimalType:
-                                                                        DecimalType
-                                                                            .commaDecimal,
-                                                                  )}€',
+                                                                  functions
+                                                                      .formatAsEuro(
+                                                                          _model
+                                                                              .owedToYou),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .displaySmall
@@ -1608,15 +1603,10 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                           4.0,
                                                                           0.0),
                                                               child: Text(
-                                                                '${formatNumber(
-                                                                  _model.youOwe,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .decimal,
-                                                                  decimalType:
-                                                                      DecimalType
-                                                                          .commaDecimal,
-                                                                )}€',
+                                                                functions
+                                                                    .formatAsEuro(
+                                                                        _model
+                                                                            .youOwe),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .displaySmall
@@ -1755,22 +1745,10 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                               child: Text(
                                                                 _model.balance >
                                                                         0.0
-                                                                    ? '+${formatNumber(
-                                                                        _model
-                                                                            .balance,
-                                                                        formatType:
-                                                                            FormatType.decimal,
-                                                                        decimalType:
-                                                                            DecimalType.commaDecimal,
-                                                                      )}€'
-                                                                    : '${formatNumber(
-                                                                        _model
-                                                                            .balance,
-                                                                        formatType:
-                                                                            FormatType.decimal,
-                                                                        decimalType:
-                                                                            DecimalType.commaDecimal,
-                                                                      )}€',
+                                                                    ? '+${functions.formatAsEuro(_model.balance)}'
+                                                                    : functions
+                                                                        .formatAsEuro(
+                                                                            _model.balance),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .displaySmall
@@ -1948,11 +1926,8 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16.0,
-                                                                16.0,
-                                                                16.0,
-                                                                0.0),
+                                                            .fromSTEB(0.0, 16.0,
+                                                                0.0, 0.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 40.0,
@@ -2027,12 +2002,11 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                             ),
                                                           ),
                                                           Expanded(
-                                                            flex: 2,
+                                                            flex: 3,
                                                             child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
+                                                                      0.0, 0.0),
                                                               child: Text(
                                                                 'Znesek',
                                                                 style: FlutterFlowTheme.of(
@@ -2073,7 +2047,7 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            12.0,
+                                                                            4.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
@@ -2260,9 +2234,11 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                     ),
                                                                     child:
                                                                         Padding(
-                                                                      padding:
-                                                                          EdgeInsets.all(
-                                                                              12.0),
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          4.0,
+                                                                          12.0,
+                                                                          4.0,
+                                                                          12.0),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
@@ -2333,18 +2309,23 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                                                       children: [
-                                                                                        Text(
-                                                                                          listViewBillsRecord.title,
-                                                                                          textAlign: TextAlign.start,
-                                                                                          style: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                                font: GoogleFonts.interTight(
+                                                                                        Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                                          child: Text(
+                                                                                            listViewBillsRecord.title,
+                                                                                            textAlign: TextAlign.start,
+                                                                                            style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                                  font: GoogleFonts.interTight(
+                                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                                  ),
+                                                                                                  letterSpacing: 0.0,
                                                                                                   fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                                                   fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                                 ),
-                                                                                                letterSpacing: 0.0,
-                                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                                              ),
+                                                                                            maxLines: 1,
+                                                                                            overflow: TextOverflow.ellipsis,
+                                                                                          ),
                                                                                         ),
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
@@ -2364,23 +2345,22 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                                                   fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                                                   fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                                                 ),
+                                                                                            maxLines: 1,
+                                                                                            overflow: TextOverflow.fade,
                                                                                           ),
                                                                                         ),
                                                                                       ],
                                                                                     ),
                                                                                   ),
                                                                                   Expanded(
-                                                                                    flex: 2,
+                                                                                    flex: 4,
                                                                                     child: Align(
-                                                                                      alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                                      alignment: AlignmentDirectional(1.0, 0.0),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsets.all(8.0),
                                                                                         child: Text(
-                                                                                          '${formatNumber(
-                                                                                            listViewBillsRecord.totalAmount,
-                                                                                            formatType: FormatType.decimal,
-                                                                                            decimalType: DecimalType.commaDecimal,
-                                                                                          )}€',
+                                                                                          functions.formatAsEuro(listViewBillsRecord.totalAmount),
+                                                                                          textAlign: TextAlign.right,
                                                                                           style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                                 font: GoogleFonts.interTight(
                                                                                                   fontWeight: FontWeight.w600,

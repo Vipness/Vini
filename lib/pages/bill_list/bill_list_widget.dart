@@ -4,6 +4,7 @@ import '/bottom_sheets/confirms/remove_bill/remove_bill_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/misc/empty_list/empty_list_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -265,7 +266,7 @@ class _BillListWidgetState extends State<BillListWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
+                                                        12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Akcija',
                                                   style: FlutterFlowTheme.of(
@@ -529,22 +530,34 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                         CrossAxisAlignment
                                                                             .start,
                                                                     children: [
-                                                                      Text(
-                                                                        listViewBillsRecord
-                                                                            .title,
-                                                                        textAlign:
-                                                                            TextAlign.start,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .override(
-                                                                              font: GoogleFonts.interTight(
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          listViewBillsRecord
+                                                                              .title,
+                                                                          textAlign:
+                                                                              TextAlign.start,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .override(
+                                                                                font: GoogleFonts.interTight(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
                                                                                 fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                               ),
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                            ),
+                                                                          maxLines:
+                                                                              1,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                        ),
                                                                       ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -579,11 +592,11 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                   ),
                                                                 ),
                                                                 Expanded(
-                                                                  flex: 2,
+                                                                  flex: 3,
                                                                   child: Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            -1.0,
+                                                                            1.0,
                                                                             0.0),
                                                                     child:
                                                                         Padding(
@@ -592,14 +605,8 @@ class _BillListWidgetState extends State<BillListWidget> {
                                                                               8.0),
                                                                       child:
                                                                           Text(
-                                                                        '${formatNumber(
-                                                                          listViewBillsRecord
-                                                                              .totalAmount,
-                                                                          formatType:
-                                                                              FormatType.decimal,
-                                                                          decimalType:
-                                                                              DecimalType.commaDecimal,
-                                                                        )}€',
+                                                                        functions
+                                                                            .formatAsEuro(listViewBillsRecord.totalAmount),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
