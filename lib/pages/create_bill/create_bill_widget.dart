@@ -987,6 +987,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                                 .bodyLarge
                                                                 .fontStyle,
                                                       ),
+                                                  textAlign: TextAlign.center,
                                                 ),
                                                 duration: Duration(
                                                     milliseconds: 2000),
@@ -1599,6 +1600,9 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                                             fontStyle:
                                                                                 FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                           ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
                                                                     ),
                                                                     duration: Duration(
                                                                         milliseconds:
@@ -1890,6 +1894,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                           .bodyLarge
                                                           .fontStyle,
                                                 ),
+                                            textAlign: TextAlign.center,
                                           ),
                                           duration:
                                               Duration(milliseconds: 4000),
@@ -1921,7 +1926,7 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                                     ?.unfocus();
                                               },
                                               child: Container(
-                                                height: 200.0,
+                                                height: 210.0,
                                                 child: AlertErrorWidget(
                                                   message:
                                                       'Ni mogoče shraniti računa! Najprej izpolnite polja in dodajte vsaj eno postavko.',

@@ -804,7 +804,7 @@ class _Auth1WidgetState extends State<Auth1Widget>
                                                                         context),
                                                                 child:
                                                                     Container(
-                                                                  height: 325.0,
+                                                                  height: 360.0,
                                                                   child:
                                                                       ForgotPasswordWidget(),
                                                                 ),
@@ -1647,8 +1647,44 @@ class _Auth1WidgetState extends State<Auth1Widget>
                                                               .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
-                                                                'Passwords don\'t match!',
+                                                                'Gesli se ne ujemata!',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: Colors
+                                                                          .black,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
                                                               ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
                                                             ),
                                                           );
                                                           return;

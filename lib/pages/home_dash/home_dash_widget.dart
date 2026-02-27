@@ -45,7 +45,8 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
       if (RootPageContext.isInactiveRootPage(context)) {
         return;
       }
-      if (currentUserDocument?.householdId == null) {
+      if (currentUserDocument != null &&
+          currentUserDocument?.householdId == null) {
         context.goNamed(
           OnboardingWidget.routeName,
           extra: <String, dynamic>{

@@ -288,7 +288,7 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0)
                                 .resolve(Directionality.of(context)),
                             child: Container(
-                              height: 200.0,
+                              height: 210.0,
                               child: AlertErrorWidget(
                                 message:
                                     'Imena ni mogoče spremeniti, ker se polji ne ujemata.',

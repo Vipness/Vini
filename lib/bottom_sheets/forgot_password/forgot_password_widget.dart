@@ -75,7 +75,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 child: TextFormField(
                   controller: _model.emailTextController,
                   focusNode: _model.emailFocusNode,
-                  autofocus: true,
+                  autofocus: false,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -144,6 +144,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                   cursorColor: FlutterFlowTheme.of(context).primary,
+                  keyboardType: TextInputType.emailAddress,
                   enableInteractiveSelection: true,
                   validator:
                       _model.emailTextControllerValidator.asValidator(context),
@@ -155,7 +156,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                 child: Text(
-                  'Na ta email vam bomo poslali ponastavitveno geslo',
+                  'Na ta email naslov vam bomo poslali ponastavitveno geslo',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -171,6 +172,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                         fontStyle:
                             FlutterFlowTheme.of(context).labelMedium.fontStyle,
                       ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -178,12 +180,35 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () async {
+                  Navigator.pop(context);
                   if (_model.emailTextController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          'Email required!',
+                          'Potreben je email naslov!',
+                          style:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.black,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
+                          textAlign: TextAlign.center,
                         ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).info,
                       ),
                     );
                     return;

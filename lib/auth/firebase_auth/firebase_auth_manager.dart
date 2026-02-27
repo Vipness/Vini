@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../auth_manager.dart';
-
+import '../auth_error_mapper.dart';
+import '../error_snackbar.dart';
 import '/backend/backend.dart';
 import 'anonymous_auth.dart';
 import 'apple_auth.dart';
@@ -13,6 +15,7 @@ import 'firebase_user_provider.dart';
 import 'google_auth.dart';
 import 'jwt_token_auth.dart';
 import 'github_auth.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 
 export '../base_auth_user_provider.dart';
 
@@ -70,14 +73,8 @@ class FirebaseAuthManager extends AuthManager
       }
       await currentUser?.delete();
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
-        );
-      }
+      ErrorSnackBar.show(context, AuthErrorMapper.toSlovenian(e.code));
+      return null;
     }
   }
 
@@ -94,14 +91,8 @@ class FirebaseAuthManager extends AuthManager
       await currentUser?.updateEmail(email);
       await updateUserDocument(email: email);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before updating your email.')),
-        );
-      }
+      ErrorSnackBar.show(context, AuthErrorMapper.toSlovenian(e.code));
+      return null;
     }
   }
 
@@ -117,12 +108,8 @@ class FirebaseAuthManager extends AuthManager
       }
       await currentUser?.updatePassword(newPassword);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'requires-recent-login') {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.message!}')),
-        );
-      }
+      ErrorSnackBar.show(context, AuthErrorMapper.toSlovenian(e.code));
+      return null;
     }
   }
 
@@ -134,14 +121,28 @@ class FirebaseAuthManager extends AuthManager
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.message!}')),
-      );
+      ErrorSnackBar.show(context, AuthErrorMapper.toSlovenian(e.code));
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
+      SnackBar(
+        content: Text(
+          'Email za ponastavitev gesla je bil poslan.',
+          style: FlutterFlowTheme.of(context).bodyLarge.override(
+                font: GoogleFonts.inter(
+                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                ),
+                color: Colors.white,
+                letterSpacing: 0.0,
+                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+              ),
+          textAlign: TextAlign.center,
+        ),
+        duration: Duration(milliseconds: 4000),
+        backgroundColor: FlutterFlowTheme.of(context).success,
+      ),
     );
   }
 
@@ -312,17 +313,7 @@ class FirebaseAuthManager extends AuthManager
           ? null
           : ViniFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
-      final errorMsg = switch (e.code) {
-        'email-already-in-use' =>
-          'Error: The email is already in use by a different account',
-        'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
-        _ => 'Error: ${e.message!}',
-      };
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMsg)),
-      );
+      ErrorSnackBar.show(context, AuthErrorMapper.toSlovenian(e.code));
       return null;
     }
   }
