@@ -2290,6 +2290,12 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                                       width: 44.0,
                                                                                       height: 44.0,
                                                                                       fit: BoxFit.cover,
+                                                                                      errorBuilder: (context, error, stackTrace) => Image.asset(
+                                                                                        'assets/images/error_image.png',
+                                                                                        width: 44.0,
+                                                                                        height: 44.0,
+                                                                                        fit: BoxFit.cover,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
