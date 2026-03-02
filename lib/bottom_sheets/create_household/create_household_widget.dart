@@ -1,3 +1,4 @@
+import '../../misc/alert_error/alert_error_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -86,6 +87,7 @@ class _CreateHouseholdWidgetState extends State<CreateHouseholdWidget> {
                     focusNode: _model.userNameFocusNode,
                     autofocus: false,
                     obscureText: false,
+                    textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: 'Vaše ime',
                       labelStyle:
@@ -171,6 +173,7 @@ class _CreateHouseholdWidgetState extends State<CreateHouseholdWidget> {
                   focusNode: _model.householdNameFocusNode,
                   autofocus: false,
                   obscureText: false,
+                  textCapitalization: TextCapitalization.sentences,
                   decoration: InputDecoration(
                     labelText: 'Ime skupine',
                     labelStyle:
@@ -247,69 +250,92 @@ class _CreateHouseholdWidgetState extends State<CreateHouseholdWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  var householdsRecordReference =
-                      HouseholdsRecord.collection.doc();
-                  await householdsRecordReference.set({
-                    ...createHouseholdsRecordData(
-                      name: _model.householdNameTextController.text,
-                      createdBy: currentUserReference,
-                      joinCode: random_data.randomString(
-                        6,
-                        6,
-                        false,
-                        true,
-                        true,
+                  if (_model.householdNameTextController.text.trim() != "" &&
+                      _model.userNameTextController.text.trim() != "") {
+                    var householdsRecordReference =
+                        HouseholdsRecord.collection.doc();
+                    await householdsRecordReference.set({
+                      ...createHouseholdsRecordData(
+                        name: _model.householdNameTextController.text,
+                        createdBy: currentUserReference,
+                        joinCode: random_data.randomString(
+                          6,
+                          6,
+                          false,
+                          true,
+                          true,
+                        ),
                       ),
-                    ),
-                    ...mapToFirestore(
-                      {
-                        'members': [currentUserReference],
-                        'admins': [currentUserReference],
-                        'createdAt': FieldValue.serverTimestamp(),
+                      ...mapToFirestore(
+                        {
+                          'members': [currentUserReference],
+                          'admins': [currentUserReference],
+                          'createdAt': FieldValue.serverTimestamp(),
+                        },
+                      ),
+                    });
+                    _model.createdHousehold =
+                        HouseholdsRecord.getDocumentFromData({
+                      ...createHouseholdsRecordData(
+                        name: _model.householdNameTextController.text,
+                        createdBy: currentUserReference,
+                        joinCode: random_data.randomString(
+                          6,
+                          6,
+                          false,
+                          true,
+                          true,
+                        ),
+                      ),
+                      ...mapToFirestore(
+                        {
+                          'members': [currentUserReference],
+                          'admins': [currentUserReference],
+                          'createdAt': DateTime.now(),
+                        },
+                      ),
+                    }, householdsRecordReference);
+
+                    await currentUserReference!.update(createUsersRecordData(
+                      householdId: _model.createdHousehold?.reference,
+                      displayName: _model.userNameTextController.text,
+                      photoUrl: functions
+                          .generatePhotoUrl(_model.userNameTextController.text),
+                    ));
+
+                    context.goNamed(
+                      HomeDashWidget.routeName,
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 200),
+                        ),
                       },
-                    ),
-                  });
-                  _model.createdHousehold =
-                      HouseholdsRecord.getDocumentFromData({
-                    ...createHouseholdsRecordData(
-                      name: _model.householdNameTextController.text,
-                      createdBy: currentUserReference,
-                      joinCode: random_data.randomString(
-                        6,
-                        6,
-                        false,
-                        true,
-                        true,
-                      ),
-                    ),
-                    ...mapToFirestore(
-                      {
-                        'members': [currentUserReference],
-                        'admins': [currentUserReference],
-                        'createdAt': DateTime.now(),
+                    );
+
+                    safeSetState(() {});
+                  } else {
+                    await showDialog(
+                      context: context,
+                      builder: (dialogContext) {
+                        return Dialog(
+                          elevation: 0,
+                          insetPadding: EdgeInsets.zero,
+                          backgroundColor: Colors.transparent,
+                          alignment: AlignmentDirectional(0.0, 0.0)
+                              .resolve(Directionality.of(context)),
+                          child: Container(
+                            height: 210.0,
+                            child: AlertErrorWidget(
+                              message:
+                                  'Ni mogoče ustvariti skupine! Najprej izpolnite polja.',
+                            ),
+                          ),
+                        );
                       },
-                    ),
-                  }, householdsRecordReference);
-
-                  await currentUserReference!.update(createUsersRecordData(
-                    householdId: _model.createdHousehold?.reference,
-                    displayName: _model.userNameTextController.text,
-                    photoUrl: functions
-                        .generatePhotoUrl(_model.userNameTextController.text),
-                  ));
-
-                  context.goNamed(
-                    HomeDashWidget.routeName,
-                    extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.rightToLeft,
-                        duration: Duration(milliseconds: 200),
-                      ),
-                    },
-                  );
-
-                  safeSetState(() {});
+                    );
+                  }
                 },
                 text: 'Ustvari',
                 options: FFButtonOptions(

@@ -1,3 +1,4 @@
+import '../../misc/alert_error/alert_error_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -86,6 +87,7 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                     focusNode: _model.userNameFocusNode,
                     autofocus: false,
                     obscureText: false,
+                    textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: 'Vaše ime',
                       labelStyle:
@@ -266,42 +268,89 @@ class _JoinHouseholdWidgetState extends State<JoinHouseholdWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    _model.householdsRecord = await queryHouseholdsRecordOnce(
-                      queryBuilder: (householdsRecord) =>
-                          householdsRecord.where(
-                        'joinCode',
-                        isEqualTo: _model.householdCodeTextController.text,
-                      ),
-                      singleRecord: true,
-                    ).then((s) => s.firstOrNull);
-                    await _model.householdsRecord!.reference.update({
-                      ...mapToFirestore(
-                        {
-                          'members':
-                              FieldValue.arrayUnion([currentUserReference]),
-                        },
-                      ),
-                    });
-
-                    await currentUserReference!.update(createUsersRecordData(
-                      displayName: _model.userNameTextController.text,
-                      householdId: _model.householdsRecord?.reference,
-                      photoUrl: functions
-                          .generatePhotoUrl(_model.userNameTextController.text),
-                    ));
-
-                    context.goNamed(
-                      HomeDashWidget.routeName,
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 200),
+                    if (_model.householdCodeTextController.text.trim() != "" &&
+                        _model.userNameTextController.text.trim() != "") {
+                      _model.householdsRecord = await queryHouseholdsRecordOnce(
+                        queryBuilder: (householdsRecord) =>
+                            householdsRecord.where(
+                          'joinCode',
+                          isEqualTo: _model.householdCodeTextController.text,
                         ),
-                      },
-                    );
+                        singleRecord: true,
+                      ).then((s) => s.firstOrNull);
 
-                    safeSetState(() {});
+                      if (_model.householdsRecord == null) {
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: Container(
+                                height: 210.0,
+                                child: AlertErrorWidget(
+                                  message:
+                                      'Skupine s to kodo ne najdemo. Preverite, če je koda pravilna in poskusite znova.',
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        return;
+                      }
+
+                      await _model.householdsRecord!.reference.update({
+                        ...mapToFirestore(
+                          {
+                            'members':
+                                FieldValue.arrayUnion([currentUserReference]),
+                          },
+                        ),
+                      });
+
+                      await currentUserReference!.update(createUsersRecordData(
+                        displayName: _model.userNameTextController.text,
+                        householdId: _model.householdsRecord?.reference,
+                        photoUrl: functions.generatePhotoUrl(
+                            _model.userNameTextController.text),
+                      ));
+
+                      context.goNamed(
+                        HomeDashWidget.routeName,
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 200),
+                          ),
+                        },
+                      );
+
+                      safeSetState(() {});
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (dialogContext) {
+                          return Dialog(
+                            elevation: 0,
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.transparent,
+                            alignment: AlignmentDirectional(0.0, 0.0)
+                                .resolve(Directionality.of(context)),
+                            child: Container(
+                              height: 210.0,
+                              child: AlertErrorWidget(
+                                message:
+                                    'Ni se mogoče pridružiti skupini! Najprej izpolnite polja.',
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
                   },
                   text: 'Pridruži se',
                   options: FFButtonOptions(
