@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "703525665180-u7dkd5i60nmn5vsqrd9b64trkdto5o6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.vini",
+            "certificate_hash": "2da66599e58d073a9a136894ad7fd6312e2dd34b"
+          }
+        },
+        {
           "client_id": "703525665180-4ckfiovgf27l8flislk4tubms2iff8ns.apps.googleusercontent.com",
           "client_type": 3
         }
