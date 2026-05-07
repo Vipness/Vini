@@ -1788,7 +1788,8 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                           status: 'open',
                                           paidBy: _model.payerRef?.reference,
                                           totalAmount: 0.0,
-                                          date: _model.datePicked,
+                                          date: _model.datePicked ??
+                                              DateTime.now(),
                                         ),
                                         ...mapToFirestore(
                                           {
@@ -1807,7 +1808,8 @@ class _CreateBillWidgetState extends State<CreateBillWidget>
                                           status: 'open',
                                           paidBy: _model.payerRef?.reference,
                                           totalAmount: 0.0,
-                                          date: _model.datePicked,
+                                          date: _model.datePicked ??
+                                              DateTime.now(),
                                         ),
                                         ...mapToFirestore(
                                           {

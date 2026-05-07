@@ -14,20 +14,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
+/// Generate profile picture by hashing user name so it stays the same
 String generatePhotoUrl(String name) {
   final trimmed = name.trim();
 
-  // Odstrani vse, kar ni črka ali presledek
   final sanitized = trimmed.replaceAll(RegExp(r'[^a-zA-Z\s]'), '');
+  final finalName = sanitized.trim().isEmpty ? 'Uporabnik' : sanitized.trim();
 
-  // Če po tem ni več črk, uporabi fallback
-  final finalName = sanitized.trim().isEmpty ? 'User' : sanitized.trim();
+  int hash = 0;
+  // codeUnits = list of UTF-16 char codes e.g. 'A' = 65
+  for (final char in finalName.codeUnits) {
+    hash =
+        (hash * 31 + char) & 0xFFFFFF; // 31 is a classic prime used in hashing
+  } // & 0xFFFFFF clamps the result to 6 hex digits (a valid color)
+  final color = hash
+      .toRadixString(16)
+      .padLeft(6, '0'); // convert to hex string e.g. "a3f1c0"
 
-  // Encode za URL
   final encodedName = Uri.encodeComponent(finalName);
 
   // Sestavi URL
-  return 'https://ui-avatars.com/api/?name=$encodedName&background=random';
+  return 'https://ui-avatars.com/api/?name=$encodedName&background=$color&color=fff&size=128';
 }
 
 String formatAsEuro(double amount) {

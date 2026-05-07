@@ -1,3 +1,4 @@
+import '../../flutter_flow/custom_functions.dart' as functions;
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -246,6 +247,8 @@ class _ChangeNameWidgetState extends State<ChangeNameWidget> {
                         _model.nameConfTextController.text) {
                       await currentUserReference!.update(createUsersRecordData(
                         displayName: _model.nameConfTextController.text,
+                        photoUrl: functions.generatePhotoUrl(
+                            _model.nameConfTextController.text),
                       ));
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

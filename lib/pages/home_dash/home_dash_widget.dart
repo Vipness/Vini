@@ -1038,16 +1038,33 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                   .fontStyle,
                                                         ),
                                                   ),
-                                                  AuthUserStreamWidget(
-                                                    builder: (context) => Text(
-                                                      currentUserDisplayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .interTight(
+                                                  Expanded(
+                                                    child: AuthUserStreamWidget(
+                                                      builder: (context) =>
+                                                          Text(
+                                                        currentUserDisplayName
+                                                            .split(" ")[0],
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .interTight(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -1057,41 +1074,9 @@ class _HomeDashWidgetState extends State<HomeDashWidget>
                                                                       .headlineMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  if (rowHouseholdsRecord.admins
-                                                      .contains(
-                                                          homeDashUsersRecord
-                                                              .reference))
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  4.0),
-                                                      child: Icon(
-                                                        Icons
-                                                            .admin_panel_settings_outlined,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
                                                       ),
                                                     ),
+                                                  ),
                                                 ],
                                               ),
                                               Padding(
